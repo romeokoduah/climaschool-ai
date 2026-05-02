@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" data-season="dryheat">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClimaSchool AI · Home</title>
+<meta name="description" content="An AI-powered seasonal health advisory platform linking real-time climate data to child health action across Ghana's schools." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- nav -->
+<header class="nav">
+  <a class="nav__brand" href="index.html">
+    <span class="brand-icon">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" class="bi-ring"/>
+        <circle cx="16" cy="16" r="6" class="bi-core"/>
+        <path d="M16 2 L16 8 M16 24 L16 30 M2 16 L8 16 M24 16 L30 16" class="bi-rays"/>
+      </svg>
+    </span>
+    <span class="brand-text"><b>ClimaSchool</b><em>AI</em></span>
+  </a>
+  <nav class="nav__links">
+    <a href="index.html">Home</a>
+    <a href="seasons.html">Seasons</a>
+    <a href="advisory.html">Advisory</a>
+    <a href="engine.html">Engine Room</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a class="nav__cta" href="engine.html">
+    <span class="dot"></span>Open Engine Room
+  </a>
+</header>
+
+<!-- ── HERO ── -->
+<section id="top" class="hero hero--photo">
+  <div class="hero__photo">
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80&auto=format&fit=crop" alt="School children in Africa" />
+    <div class="hero__photo-tint"></div>
+  </div>
+
+  <div class="hero__inner">
+
+    <div class="hero__chip">
+      <span class="dot"></span>
+      <span>UNICEF Venture Fund · Climate Ventures Cohort 2026</span>
+    </div>
+
+    <h1 class="hero__h1">
+      <span>The weather forecast,</span>
+      <span class="hero__h1--em">but for child&nbsp;health.</span>
+    </h1>
+
+    <p class="hero__lede">
+      ClimaSchool AI turns live climate, air-quality and disease-surveillance feeds
+      into hyperlocal action — for head teachers, parents and community health workers
+      across <b>12 pilot schools in Ghana</b>, in four languages.
+    </p>
+
+    <div class="hero__cta-row">
+      <a href="engine.html" class="btn btn--primary">
+        <span>Open the Engine Room</span>
+        <svg viewBox="0 0 16 16" class="btn__arrow"><path d="M2 8 L13 8 M9 4 L13 8 L9 12" /></svg>
+      </a>
+      <a href="seasons.html" class="btn btn--ghost">Explore the seasons</a>
+    </div>
+
+    <!-- live tile dashboard -->
+    <div class="tiles">
+
+      <article class="tile tile--temp">
+        <div class="tile__head">
+          <span class="tile__label">Live · Greater Accra</span>
+          <span class="tile__pulse"></span>
+        </div>
+        <div class="tile__big">
+          <span class="num" id="liveTemp">39</span><sup>°C</sup>
+        </div>
+        <div class="tile__bar">
+          <div class="tile__bar-fill" id="tempBar"></div>
+          <div class="tile__bar-mark" style="left:62%"><span>safe</span></div>
+          <div class="tile__bar-mark tile__bar-mark--alert" style="left:88%"><span>40°</span></div>
+        </div>
+        <p class="tile__note">Schedule modification triggered · afternoon PE cancelled at 4 schools</p>
+      </article>
+
+      <article class="tile tile--alerts">
+        <div class="tile__head">
+          <span class="tile__label">Active alerts · last 24h</span>
+          <span class="tile__pulse tile__pulse--red"></span>
+        </div>
+        <div class="tile__big">
+          <span class="num" id="liveAlerts">147</span>
+        </div>
+        <ul class="mini-feed">
+          <li><span class="tag tag--red">heat</span> Greater Accra · 12 schools</li>
+          <li><span class="tag tag--amber">aqi</span> Kumasi · indoor PE only</li>
+          <li><span class="tag tag--blue">chw</span> 3 home visits dispatched · Tamale</li>
+        </ul>
+      </article>
+
+      <article class="tile tile--reach">
+        <div class="tile__head">
+          <span class="tile__label">Parent SMS dispatched</span>
+        </div>
+        <div class="tile__big">
+          <span class="num" id="liveSMS">14,902</span>
+        </div>
+        <p class="tile__note">English · Twi · Hausa · Ga</p>
+        <div class="lang-pills">
+          <span>EN</span><span>TW</span><span>HA</span><span>GA</span>
+        </div>
+      </article>
+
+      <article class="tile tile--countdown">
+        <div class="tile__head">
+          <span class="tile__label">UNICEF submission</span>
+        </div>
+        <div class="tile__big">
+          <span class="num" id="liveDays">19</span><sup>days</sup>
+        </div>
+        <p class="tile__note">17 May 2026 · USD 100k · equity-free</p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── WHAT WE DO ── -->
+<section class="what">
+  <div class="section-head">
+    <span class="eyebrow"><i></i>what we do</span>
+    <h2>Three audiences. <em>One trusted advisory.</em></h2>
+    <p class="section-sub">
+      Five live data feeds in. One AI engine. Three communities receiving the
+      action they can take, in the language they speak — before risk becomes incidence.
+    </p>
+  </div>
+
+  <div class="audience">
+    <a class="audience__card" href="advisory.html">
+      <div class="audience__photo">
+        <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=900&q=80&auto=format&fit=crop" alt="Children in school"/>
+      </div>
+      <div class="audience__body">
+        <span class="caps">For schools</span>
+        <h3>Head teachers &amp; nurses</h3>
+        <p>Operational checklists for heat, dust, flood, malaria. Schedule changes triggered automatically.</p>
+        <span class="audience__more">Open advisory →</span>
+      </div>
+    </a>
+
+    <a class="audience__card" href="advisory.html">
+      <div class="audience__photo">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900&q=80&auto=format&fit=crop" alt="Parents and community"/>
+      </div>
+      <div class="audience__body">
+        <span class="caps">For families</span>
+        <h3>Parents &amp; guardians</h3>
+        <p>Action-led SMS in English, Twi, Hausa, Ga — what to feed, what to watch for, when to seek care.</p>
+        <span class="audience__more">See parent SMS →</span>
+      </div>
+    </a>
+
+    <a class="audience__card" href="advisory.html">
+      <div class="audience__photo">
+        <img src="https://images.unsplash.com/photo-1542884748-2b87b36c6b90?w=900&q=80&auto=format&fit=crop" alt="Health workers in the community"/>
+      </div>
+      <div class="audience__body">
+        <span class="caps">For community health</span>
+        <h3>CHWs &amp; district health</h3>
+        <p>Field tasks and feedback loop — bednet checks, RDTs, ORS dispatch, surveillance escalation.</p>
+        <span class="audience__more">See CHW console →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ── SHORT CTA ── -->
+<section class="midcta">
+  <div class="midcta__inner">
+    <div>
+      <span class="eyebrow"><i></i>try it now</span>
+      <h2>Drag in a CSV. Move a slider. <em>Watch the advisory rewrite itself.</em></h2>
+      <p>The Engine Room is the live operations console — every input you change
+      shows how the AI re-classifies the day, who gets alerted, and what the SMS will say.</p>
+      <div class="midcta__btns">
+        <a href="engine.html" class="btn btn--primary">
+          <span>Open the Engine Room</span>
+          <svg viewBox="0 0 16 16" class="btn__arrow"><path d="M2 8 L13 8 M9 4 L13 8 L9 12" /></svg>
+        </a>
+        <a href="seasons.html" class="btn btn--ghost">Browse seasons</a>
+      </div>
+    </div>
+    <div class="midcta__photo">
+      <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1200&q=80&auto=format&fit=crop" alt="Ghanaian school child"/>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="foot">
+  <div class="foot__top">
+    <a class="nav__brand" href="index.html">
+      <span class="brand-icon">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" class="bi-ring"/>
+          <circle cx="16" cy="16" r="6" class="bi-core"/>
+          <path d="M16 2 L16 8 M16 24 L16 30 M2 16 L8 16 M24 16 L30 16" class="bi-rays"/>
+        </svg>
+      </span>
+      <span class="brand-text"><b>ClimaSchool</b><em>AI</em></span>
+    </a>
+    <div class="foot__cols">
+      <div><span class="caps">By</span><p>United Youth Initiative for Africa<br/>UNIYIA · Ghana</p><a href="mailto:info@uniyia.org">info@uniyia.org</a></div>
+      <div><span class="caps">For</span><p>UNICEF Venture Fund<br/>Climate Ventures Cohort 2026</p></div>
+      <div><span class="caps">Stack</span><p>Python · FastAPI · React · PostgreSQL · Twilio</p></div>
+      <div><span class="caps">Licence</span><p>MIT (software) · CC-BY 4.0 (advisory)</p></div>
+    </div>
+  </div>
+  <div class="foot__base">
+    <span>© 2026 UNIYIA</span>
+    <span>Built openly for Ghana — and West Africa next.</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-season="dryheat">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClimaSchool AI · Seasons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav__brand" href="index.html">
+    <span class="brand-icon">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" class="bi-ring"/>
+        <circle cx="16" cy="16" r="6" class="bi-core"/>
+        <path d="M16 2 L16 8 M16 24 L16 30 M2 16 L8 16 M24 16 L30 16" class="bi-rays"/>
+      </svg>
+    </span>
+    <span class="brand-text"><b>ClimaSchool</b><em>AI</em></span>
+  </a>
+  <nav class="nav__links">
+    <a href="index.html">Home</a>
+    <a href="seasons.html">Seasons</a>
+    <a href="advisory.html">Advisory</a>
+    <a href="engine.html">Engine Room</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a class="nav__cta" href="engine.html"><span class="dot"></span>Open Engine Room</a>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero__inner">
+    <span class="eyebrow"><i></i>Ghana's climate-health calendar</span>
+    <h1>Four seasons. Four playbooks. <em>One engine.</em></h1>
+    <p>Each season produces a sharply different child-health profile.
+    Tap any season to load the live advisory the platform is dispatching.</p>
+  </div>
+  <div class="page-hero__photo">
+    <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&q=80&auto=format&fit=crop" alt="Ghanaian school children"/>
+  </div>
+</section>
+
+<section class="seasons">
+  <div class="seasons__grid">
+    <button class="sc" data-season="harmattan">
+      <div class="sc__art sc__art--harmattan">
+        <svg viewBox="0 0 200 120" aria-hidden="true">
+          <path d="M0 50 Q 50 30 100 50 T 200 50" /><path d="M0 70 Q 50 50 100 70 T 200 70" />
+          <path d="M0 90 Q 50 70 100 90 T 200 90" />
+        </svg>
+      </div>
+      <div class="sc__body">
+        <span class="sc__when">Nov — Feb</span>
+        <h3>Harmattan</h3>
+        <p>Sahara dust, low humidity, meningitis-belt risk peaks.</p>
+        <ul class="sc__tags"><li>ARI</li><li>CSM</li><li>anaemia</li></ul>
+      </div>
+      <span class="sc__cta">Load advisory →</span>
+    </button>
+
+    <button class="sc sc--current" data-season="dryheat">
+      <div class="sc__art sc__art--dryheat">
+        <svg viewBox="0 0 200 120" aria-hidden="true">
+          <circle cx="100" cy="60" r="28" />
+          <g class="sc__rays">
+            <line x1="100" y1="10" x2="100" y2="22"/><line x1="100" y1="98" x2="100" y2="110"/>
+            <line x1="40" y1="60" x2="52" y2="60"/><line x1="148" y1="60" x2="160" y2="60"/>
+            <line x1="58" y1="18" x2="66" y2="26"/><line x1="142" y1="18" x2="134" y2="26"/>
+            <line x1="58" y1="102" x2="66" y2="94"/><line x1="142" y1="102" x2="134" y2="94"/>
+          </g>
+        </svg>
+      </div>
+      <div class="sc__body">
+        <span class="sc__when">Mar — Apr <em>· active now</em></span>
+        <h3>Peak dry heat</h3>
+        <p>40°C in the north. Heat stroke, dehydration, fainting at assembly.</p>
+        <ul class="sc__tags"><li>heat</li><li>ORS</li><li>schedule</li></ul>
+      </div>
+      <span class="sc__cta">Load advisory →</span>
+    </button>
+
+    <button class="sc" data-season="firstrains">
+      <div class="sc__art sc__art--firstrains">
+        <svg viewBox="0 0 200 120" aria-hidden="true">
+          <g class="sc__drops">
+            <line x1="40" y1="20" x2="34" y2="50"/><line x1="70" y1="10" x2="64" y2="40"/>
+            <line x1="100" y1="25" x2="94" y2="55"/><line x1="130" y1="15" x2="124" y2="45"/>
+            <line x1="160" y1="30" x2="154" y2="60"/><line x1="50" y1="65" x2="44" y2="95"/>
+            <line x1="110" y1="70" x2="104" y2="100"/><line x1="170" y1="75" x2="164" y2="105"/>
+          </g>
+        </svg>
+      </div>
+      <div class="sc__body">
+        <span class="sc__when">May — Jul</span>
+        <h3>First rains</h3>
+        <p>Peak malaria transmission. Cholera & flood injury risk in coastal cities.</p>
+        <ul class="sc__tags"><li>malaria</li><li>cholera</li><li>flood</li></ul>
+      </div>
+      <span class="sc__cta">Load advisory →</span>
+    </button>
+
+    <button class="sc" data-season="secondrains">
+      <div class="sc__art sc__art--secondrains">
+        <svg viewBox="0 0 200 120" aria-hidden="true">
+          <path d="M30 90 Q 60 40 90 90" /><path d="M70 90 Q 100 30 130 90" /><path d="M110 90 Q 140 50 170 90" />
+        </svg>
+      </div>
+      <div class="sc__body">
+        <span class="sc__when">Aug — Oct</span>
+        <h3>Second rains · harvest</h3>
+        <p>Continued malaria, ARI return, post-flood food gaps — and harvest abundance.</p>
+        <ul class="sc__tags"><li>ARI</li><li>nutrition</li><li>mental</li></ul>
+      </div>
+      <span class="sc__cta">Load advisory →</span>
+    </button>
+  </div>
+</section>
+
+<!-- gallery strip -->
+<section class="gallery">
+  <div class="gallery__row">
+    <figure><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=700&q=80&auto=format&fit=crop" alt=""/></figure>
+    <figure><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=700&q=80&auto=format&fit=crop" alt=""/></figure>
+    <figure><img src="https://images.unsplash.com/photo-1542884748-2b87b36c6b90?w=700&q=80&auto=format&fit=crop" alt=""/></figure>
+    <figure><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&q=80&auto=format&fit=crop" alt=""/></figure>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__base">
+    <span>© 2026 UNIYIA</span>
+    <span>Built openly for Ghana — and West Africa next.</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

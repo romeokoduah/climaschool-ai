@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" data-season="dryheat">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClimaSchool AI · About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav__brand" href="index.html">
+    <span class="brand-icon">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" class="bi-ring"/>
+        <circle cx="16" cy="16" r="6" class="bi-core"/>
+        <path d="M16 2 L16 8 M16 24 L16 30 M2 16 L8 16 M24 16 L30 16" class="bi-rays"/>
+      </svg>
+    </span>
+    <span class="brand-text"><b>ClimaSchool</b><em>AI</em></span>
+  </a>
+  <nav class="nav__links">
+    <a href="index.html">Home</a>
+    <a href="seasons.html">Seasons</a>
+    <a href="advisory.html">Advisory</a>
+    <a href="engine.html">Engine Room</a>
+    <a href="about.html">About</a>
+  </nav>
+  <a class="nav__cta" href="engine.html"><span class="dot"></span>Open Engine Room</a>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero__inner">
+    <span class="eyebrow"><i></i>about ClimaSchool AI</span>
+    <h1>From satellite to schoolyard <em>in under 60 seconds.</em></h1>
+    <p>Five live feeds in. One AI engine. Three audiences out — each receiving the
+      action they can take, in the language they speak, before risk becomes incidence.</p>
+  </div>
+  <div class="page-hero__photo">
+    <img src="https://images.unsplash.com/photo-1542884748-2b87b36c6b90?w=1200&q=80&auto=format&fit=crop" alt="Children at a school in Ghana"/>
+  </div>
+</section>
+
+<section class="system">
+  <div class="flow">
+    <div class="flow__col">
+      <div class="flow__head"><span class="flow__num">01</span><h3>Live inputs</h3></div>
+      <ul class="flow__list">
+        <li><b>Ghana Met Agency</b><span>weather + air quality</span></li>
+        <li><b>ERA5 satellite</b><span>climate reanalysis</span></li>
+        <li><b>Ghana Health Service</b><span>district disease surveillance</span></li>
+        <li><b>WHO AQI</b><span>dust & particulate index</span></li>
+        <li><b>GES schools DB</b><span>locations + enrolment</span></li>
+      </ul>
+    </div>
+
+    <div class="flow__connector">
+      <svg viewBox="0 0 80 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100 Q 40 100 80 100" /></svg>
+    </div>
+
+    <div class="flow__col flow__col--core">
+      <div class="flow__head"><span class="flow__num">02</span><h3>AI engine</h3></div>
+      <ul class="flow__list">
+        <li><b>Season classifier</b><span>4-season tagging by district</span></li>
+        <li><b>Risk scorer</b><span>per-school threshold logic</span></li>
+        <li><b>Advisory composer</b><span>nutrition + WASH + parent SMS</span></li>
+        <li><b>Dispatcher</b><span>SMS · WhatsApp · dashboard · email</span></li>
+      </ul>
+      <div class="flow__pulse"></div>
+    </div>
+
+    <div class="flow__connector">
+      <svg viewBox="0 0 80 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100 Q 40 100 80 100" /></svg>
+    </div>
+
+    <div class="flow__col">
+      <div class="flow__head"><span class="flow__num">03</span><h3>Audiences</h3></div>
+      <ul class="flow__list">
+        <li><b>Head teachers + nurses</b><span>operational checklists</span></li>
+        <li><b>Parents + guardians</b><span>action-led SMS, 4 languages</span></li>
+        <li><b>CHWs + district health</b><span>field tasks + feedback loop</span></li>
+        <li><b>Feeding caterers</b><span>seasonal sourcing menus</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="section-head">
+    <span class="eyebrow"><i></i>open by default</span>
+    <h2>Open-source. Open-data. <em>Open for the region.</em></h2>
+    <p class="section-sub">All advisory content under CC-BY 4.0. Software stack under MIT.
+      The pilot is Ghana — the framework is built for adoption across West Africa.</p>
+  </div>
+  <div class="stack__grid">
+    <div class="stack__card"><span class="caps">Backend</span><h4>Python · FastAPI</h4><p>Async ingest, threshold engine, advisory composer.</p></div>
+    <div class="stack__card"><span class="caps">Frontend</span><h4>React · Vite</h4><p>School dashboard, district overview, CHW task console.</p></div>
+    <div class="stack__card"><span class="caps">Storage</span><h4>PostgreSQL · PostGIS</h4><p>Schools, districts, time-series risk scores by season.</p></div>
+    <div class="stack__card"><span class="caps">Comms</span><h4>Twilio · WhatsApp · USSD</h4><p>SMS-first, USSD-compatible for low-end phones.</p></div>
+    <div class="stack__card"><span class="caps">Languages</span><h4>EN · TW · HA · GA</h4><p>Set per parent at school registration.</p></div>
+    <div class="stack__card"><span class="caps">Licence</span><h4>MIT · CC-BY 4.0</h4><p>Software permissive. Advisory content shareable with attribution.</p></div>
+  </div>
+</section>
+
+<section class="submit">
+  <div class="submit__inner">
+    <span class="eyebrow"><i></i>the ask</span>
+    <h2>USD 100,000. Equity-free. <em>To prove the model in 12 schools, then scale.</em></h2>
+    <p class="submit__lede">We're submitting ClimaSchool AI to the UNICEF Venture Fund Climate Ventures
+      Cohort. Funding goes into the pilot expansion across Greater Accra, Ashanti and the Northern Region.</p>
+
+    <div class="submit__row">
+      <a class="btn btn--primary btn--lg" href="mailto:info@uniyia.org?subject=ClimaSchool%20AI%20·%20partnership">
+        <span>Talk to UNIYIA</span>
+        <svg viewBox="0 0 16 16" class="btn__arrow"><path d="M2 8 L13 8 M9 4 L13 8 L9 12" /></svg>
+      </a>
+      <a class="btn btn--ghost btn--lg" href="advisory.html">Browse the advisory</a>
+    </div>
+
+    <ul class="submit__meta">
+      <li><span class="caps">Deadline</span><b>17 May 2026</b><em id="subCountdown">19 days</em></li>
+      <li><span class="caps">Ask</span><b>USD 100,000</b><em>equity-free</em></li>
+      <li><span class="caps">Pilot</span><b>12 schools</b><em>3 regions</em></li>
+      <li><span class="caps">Reach</span><b>3.0M+</b><em>via Ghana SFP integration</em></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__top">
+    <a class="nav__brand" href="index.html">
+      <span class="brand-icon">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" class="bi-ring"/>
+          <circle cx="16" cy="16" r="6" class="bi-core"/>
+          <path d="M16 2 L16 8 M16 24 L16 30 M2 16 L8 16 M24 16 L30 16" class="bi-rays"/>
+        </svg>
+      </span>
+      <span class="brand-text"><b>ClimaSchool</b><em>AI</em></span>
+    </a>
+    <div class="foot__cols">
+      <div><span class="caps">By</span><p>United Youth Initiative for Africa<br/>UNIYIA · Ghana</p><a href="mailto:info@uniyia.org">info@uniyia.org</a></div>
+      <div><span class="caps">For</span><p>UNICEF Venture Fund<br/>Climate Ventures Cohort 2026</p></div>
+      <div><span class="caps">Stack</span><p>Python · FastAPI · React · PostgreSQL · Twilio</p></div>
+      <div><span class="caps">Licence</span><p>MIT (software) · CC-BY 4.0 (advisory)</p></div>
+    </div>
+  </div>
+  <div class="foot__base">
+    <span>© 2026 UNIYIA</span>
+    <span>Built openly for Ghana — and West Africa next.</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
