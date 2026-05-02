@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Sun, Wind, Droplets, MessageSquare, GraduationCap, Stethoscope, Users } from "lucide-react";
+import { ArrowUpRight, Sun, Wind, Droplets, MessageSquare, GraduationCap, Stethoscope, Users, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { photos } from "../lib/photos";
 
@@ -20,7 +20,7 @@ function Hero() {
   const [temp, setTemp]   = useCount(39);
   const [alerts, setAl]   = useCount(147);
   const [sms, setSMS]     = useCount(14902, 1800);
-  const days = Math.max(0, Math.ceil((new Date(Date.UTC(2026, 4, 17, 9)) - Date.now()) / 86400000));
+  const [pupils, setPup]  = useCount(4920, 1800);
 
   return (
     <section className="relative isolate overflow-hidden text-white">
@@ -36,7 +36,7 @@ function Hero() {
           className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/10 px-4 py-1.5 font-display text-xs font-medium backdrop-blur"
         >
           <span className="h-2 w-2 animate-pulse rounded-full bg-sun shadow-[0_0_10px_#ffc94d]" />
-          UNICEF Venture Fund · Climate Ventures Cohort 2026
+          Live across 12 pilot schools in Ghana
         </motion.span>
 
         <motion.h1
@@ -87,8 +87,11 @@ function Hero() {
             </div>
             <p className="text-xs text-ink-2">English · Twi · Hausa · Ga</p>
           </Tile>
-          <Tile colorClass="from-leaf/30 to-paper border-leaf" labelColor="text-ink-2" label="UNICEF submission" big={`${days}`} sup="days">
-            <p className="text-xs text-ink-2">17 May 2026 · USD 100k · equity-free</p>
+          <Tile colorClass="from-leaf/30 to-paper border-leaf" labelColor="text-ink-2" label="Pupils on the loop" big={pupils.toLocaleString()}>
+            <p className="text-xs text-ink-2">Greater Accra · Ashanti · Northern Region</p>
+            <span className="inline-flex items-center gap-1 font-display text-[11px] font-semibold text-ink-2">
+              <MapPin className="h-3 w-3" /> 12 schools · 3 regions
+            </span>
           </Tile>
         </div>
       </div>

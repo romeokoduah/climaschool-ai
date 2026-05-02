@@ -105,28 +105,31 @@ export default function About() {
 
       <section className="border-t-2 border-dashed border-line-2 bg-gradient-to-b from-heat/10 to-cream py-16">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <span className="eyebrow">the ask</span>
-          <h2 className="mx-auto mt-2 max-w-[22ch] font-display text-4xl font-semibold leading-tight md:text-6xl">
-            USD 100,000. Equity-free.{" "}
-            <em className="font-hand text-[1.15em] font-bold not-italic text-heat">To prove the model in 12 schools, then scale.</em>
+          <span className="eyebrow">partnership</span>
+          <h2 className="mx-auto mt-2 max-w-[22ch] font-display text-4xl font-semibold leading-tight md:text-5xl">
+            Built openly with Ghana's schools, families and health workers —{" "}
+            <em className="font-hand text-[1.15em] font-bold not-italic text-heat">and ready for the region next.</em>
           </h2>
           <p className="mx-auto mt-4 max-w-prose text-ink-2">
-            We're submitting ClimaSchool AI to the UNICEF Venture Fund Climate Ventures Cohort.
-            Funding goes into the pilot expansion across Greater Accra, Ashanti and the Northern Region.
+            We work with district education offices, school feeding caterers,
+            community health workers and parents to make every advisory locally
+            grounded. If you'd like to bring ClimaSchool AI to your district,
+            integrate a data feed, or contribute to the open advisory content —
+            get in touch.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a className="btn-primary" href="mailto:info@uniyia.org?subject=ClimaSchool%20AI%20·%20partnership">
-              Talk to UNIYIA <ArrowUpRight className="h-4 w-4" />
+              Get in touch <ArrowUpRight className="h-4 w-4" />
             </a>
             <Link to="/advisory" className="btn-ghost">Browse the advisory</Link>
           </div>
 
           <ul className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 md:grid-cols-4">
             {[
-              ["Deadline", "17 May 2026", `${Math.max(0, Math.ceil((new Date(Date.UTC(2026, 4, 17, 9)) - Date.now()) / 86400000))} days`],
-              ["Ask",      "USD 100,000",  "equity-free"],
-              ["Pilot",    "12 schools",   "3 regions"],
-              ["Reach",    "3.0M+",        "via Ghana SFP integration"]
+              ["Pilot",     "12 schools",      "3 regions of Ghana"],
+              ["Languages", "EN · TW · HA · GA","set per parent"],
+              ["Channels",  "SMS · WhatsApp · USSD","low-end phone friendly"],
+              ["Licence",   "Open source",     "MIT · CC-BY 4.0"]
             ].map(([cap, b, em]) => (
               <li key={cap} className="rounded-xl3 border-2 border-line bg-paper p-5 text-left shadow-soft">
                 <span className="font-display text-xs font-semibold uppercase tracking-widest text-ink-3">{cap}</span>

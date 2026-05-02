@@ -9,14 +9,14 @@ export default function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             <Col cap="By" body={<>United Youth Initiative for Africa<br/>UNIYIA · Ghana<br/><a className="border-b-2 border-dashed border-heat text-heat" href="mailto:info@uniyia.org">info@uniyia.org</a></>} />
-            <Col cap="For" body={<>UNICEF Venture Fund<br/>Climate Ventures Cohort 2026</>} />
+            <Col cap="For" body={<>Schools, families &amp; community health workers across Ghana</>} />
             <Col cap="Stack" body={<>Python · FastAPI<br/>React · PostgreSQL · Twilio</>} />
             <Col cap="Licence" body={<>MIT (software)<br/>CC-BY 4.0 (advisory)</>} />
           </div>
         </div>
         <div className="mt-8 flex flex-col justify-between gap-2 border-t-2 border-dashed border-line pt-4 font-display text-xs font-medium text-ink-3 md:flex-row">
-          <span>© 2026 UNIYIA</span>
-          <span>UNICEF Venture Fund · Climate Ventures Cohort 2026</span>
+          <span>© 2026 UNIYIA · Built openly for Ghana</span>
+          <span>MIT · CC-BY 4.0</span>
         </div>
       </div>
     </footer>
