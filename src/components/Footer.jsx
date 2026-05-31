@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="mt-12 border-t-2 border-dashed border-line-2 bg-cream-2">
@@ -14,9 +16,13 @@ export default function Footer() {
             <Col cap="Licence" body={<>MIT (software)<br/>CC-BY 4.0 (advisory)</>} />
           </div>
         </div>
-        <div className="mt-8 flex flex-col justify-between gap-2 border-t-2 border-dashed border-line pt-4 font-display text-xs font-medium text-ink-3 md:flex-row">
+        <div className="mt-8 flex flex-col justify-between gap-3 border-t-2 border-dashed border-line pt-4 font-display text-xs font-medium text-ink-3 md:flex-row md:items-center">
           <span>© 2026 UNIYIA · Built openly for Ghana</span>
-          <span>MIT · CC-BY 4.0</span>
+          <nav className="flex flex-wrap items-center gap-x-4 gap-y-1" aria-label="Legal">
+            <Link to="/privacy" className="transition hover:text-heat">Privacy</Link>
+            <Link to="/terms" className="transition hover:text-heat">Terms</Link>
+            <span>MIT · CC-BY 4.0</span>
+          </nav>
         </div>
       </div>
     </footer>

@@ -1,0 +1,31 @@
+{
+  "name": "ClimaSchool AI",
+  "short_name": "ClimaSchool",
+  "description": "Climate-health early warning and action-led child-health advisories for Ghana's schools, families and community health workers.",
+  "start_url": "/climaschool-ai/",
+  "scope": "/climaschool-ai/",
+  "display": "standalone",
+  "background_color": "#fbf7ee",
+  "theme_color": "#ff6a3d",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/climaschool-ai/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/climaschool-ai/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/climaschool-ai/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import { Upload, Play, Wind, Droplets, Sun, Cloud, ArrowUpRight, GraduationCap, 
 import { Link } from "react-router-dom";
 import { classify, presets, parseUpload } from "../lib/engine";
 import { seasons } from "../data/seasons";
+import { track } from "../lib/analytics";
 
 const districts = [
   "Greater Accra", "Ashanti · Kumasi", "Northern · Tamale",
@@ -24,7 +25,10 @@ export default function Engine() {
 
   const set = (k) => (v) => setInput((x) => ({ ...x, [k]: v }));
 
-  const applyPreset = (k) => setInput((x) => ({ ...x, ...presets[k] }));
+  const applyPreset = (k) => {
+    setInput((x) => ({ ...x, ...presets[k] }));
+    track("engine_preset", { preset: k });
+  };
 
   const onFile = async (f) => {
     if (!f) return;
@@ -64,7 +68,7 @@ export default function Engine() {
         <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-2">
           <span className="font-display text-xs font-semibold uppercase tracking-widest text-ink-3">Quick presets</span>
           {Object.keys(presets).map((k) => (
-            <button key={k} onClick={() => applyPreset(k)} className="chip">
+            <button type="button" key={k} onClick={() => applyPreset(k)} className="chip">
               {k === "normal" ? "Normal day" :
                k === "harmattan" ? "Harmattan dust" :
                k === "dryheat" ? "Heat 41°C" :
@@ -89,6 +93,8 @@ export default function Engine() {
           >
             <input ref={fileRef} type="file" hidden accept=".csv,.json,application/json,text/csv" onChange={(e) => onFile(e.target.files?.[0])} />
             <button
+              type="button"
+              aria-label="Choose a CSV or JSON climate-data file to upload"
               onClick={() => fileRef.current?.click()}
               className="flex w-full flex-col items-center gap-1.5"
             >
@@ -109,8 +115,9 @@ export default function Engine() {
           <Slider Icon={GraduationCap} label="Pilot school size" unit="pupils" value={input.schoolSize} onChange={set("schoolSize")} min={80} max={900} step={10} scale={["80","500","900"]} />
 
           <div>
-            <label className="font-display text-sm font-semibold">District</label>
+            <label htmlFor="engine-district" className="font-display text-sm font-semibold">District</label>
             <select
+              id="engine-district"
               value={input.district}
               onChange={(e) => set("district")(e.target.value)}
               className="mt-1 w-full rounded-full border-2 border-line-2 bg-paper px-4 py-2.5 font-body text-sm text-ink"
@@ -120,7 +127,8 @@ export default function Engine() {
           </div>
 
           <button
-            onClick={() => { setRunning(true); setTimeout(() => setRunning(false), 800); }}
+            type="button"
+            onClick={() => { setRunning(true); track("engine_run"); setTimeout(() => setRunning(false), 800); }}
             className={`btn-primary w-full ${running ? "scale-[.98] shadow-glow" : ""}`}
           >
             <Play className="h-4 w-4" /> Run engine
@@ -232,10 +240,11 @@ function Header({ n, title, pulse }) {
 }
 
 function Slider({ Icon, label, unit, value, onChange, min, max, step, scale }) {
+  const id = "slider-" + label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-baseline justify-between gap-2">
-        <label className="inline-flex items-center gap-2 font-display text-sm font-semibold">
+        <label htmlFor={id} className="inline-flex items-center gap-2 font-display text-sm font-semibold">
           <Icon className="h-4 w-4 text-heat" /> {label}
         </label>
         <span className="ml-auto font-display text-2xl font-bold text-heat">
@@ -244,9 +253,12 @@ function Slider({ Icon, label, unit, value, onChange, min, max, step, scale }) {
         </span>
       </div>
       <input
+        id={id}
         type="range"
         min={min} max={max} step={step}
         value={value}
+        aria-label={`${label}${unit ? ` (${unit})` : ""}`}
+        aria-valuetext={`${value}${unit ? ` ${unit}` : ""}`}
         onChange={(e) => onChange(parseFloat(e.target.value))}
       />
       <div className="flex justify-between font-display text-[11px] font-medium text-ink-3">

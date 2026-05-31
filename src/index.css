@@ -17,6 +17,34 @@ body {
 
 ::selection { background: #ff6a3d; color: #fff; }
 
+/* Visible keyboard focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #ff6a3d;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* "core" card ripple used on the About page (was previously undefined) */
+@keyframes corepulse {
+  0%   { opacity: .8; transform: scale(1); }
+  100% { opacity: 0;  transform: scale(1.04); }
+}
+
+/* Respect users who prefer reduced motion (covers CSS animations/transitions;
+   framer-motion is handled separately via <MotionConfig reducedMotion="user">) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* sliders */
 input[type="range"] {
   -webkit-appearance: none;

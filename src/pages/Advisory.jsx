@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { seasons, seasonOrder } from "../data/seasons";
@@ -29,7 +29,9 @@ export default function Advisory() {
         <div className="mt-6 inline-flex flex-wrap justify-center gap-2">
           {seasonOrder.map((k) => (
             <button
+              type="button"
               key={k}
+              aria-pressed={key === k}
               onClick={() => setSeason(k)}
               className={`chip ${key === k ? "chip-active" : ""}`}
             >

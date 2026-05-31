@@ -52,7 +52,7 @@ export const presets = {
 function clamp(n) { return Math.max(0, Math.min(100, n)); }
 
 export function parseUpload(filename, text) {
-  const json = filename.toLowerCase().endsWith(".json") || /^[\[{]/.test(text.trim());
+  const json = filename.toLowerCase().endsWith(".json") || /^[[{]/.test(text.trim());
   let row;
   if (json) {
     const j = JSON.parse(text);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Sun, Wind, Droplets, MessageSquare, GraduationCap, Stethoscope, Users, MapPin } from "lucide-react";
+import { ArrowUpRight, GraduationCap, Stethoscope, Users, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { photos } from "../lib/photos";
 
@@ -17,15 +17,15 @@ export default function Home() {
 }
 
 function Hero() {
-  const [temp, setTemp]   = useCount(39);
-  const [alerts, setAl]   = useCount(147);
-  const [sms, setSMS]     = useCount(14902, 1800);
-  const [pupils, setPup]  = useCount(4920, 1800);
+  const [temp]   = useCount(39);
+  const [alerts] = useCount(147);
+  const [sms]    = useCount(14902, 1800);
+  const [pupils] = useCount(4920, 1800);
 
   return (
     <section className="relative isolate overflow-hidden text-white">
       <div className="absolute inset-0 -z-10">
-        <img src={photos.hero} alt="" className="h-full w-full object-cover" />
+        <img src={photos.hero} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/55 to-heat/40" />
       </div>
 
@@ -36,7 +36,7 @@ function Hero() {
           className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/10 px-4 py-1.5 font-display text-xs font-medium backdrop-blur"
         >
           <span className="h-2 w-2 animate-pulse rounded-full bg-sun shadow-[0_0_10px_#ffc94d]" />
-          Live across 12 pilot schools in Ghana
+          Pilot deployment · 12 schools across Ghana
         </motion.span>
 
         <motion.h1
@@ -94,6 +94,10 @@ function Hero() {
             </span>
           </Tile>
         </div>
+
+        <p className="mt-4 font-display text-xs font-medium text-white/70">
+          ★ Sample figures shown — illustrative of a live deployment.
+        </p>
       </div>
     </section>
   );
@@ -123,9 +127,9 @@ function Tile({ colorClass, labelColor, label, pulse, big, sup, children }) {
 
 function Audiences() {
   const items = [
-    { Icon: GraduationCap, color: "bg-heat", tag: "For schools",   title: "Head teachers & nurses",   desc: "Operational checklists for heat, dust, flood, malaria. Schedule changes triggered automatically.", photo: photos.classroom },
-    { Icon: Users,         color: "bg-sky",  tag: "For families",  title: "Parents & guardians",       desc: "Action-led SMS in English, Twi, Hausa, Ga — what to feed, what to watch for, when to seek care.",   photo: photos.community },
-    { Icon: Stethoscope,   color: "bg-leaf", tag: "For community", title: "CHWs & district health",    desc: "Field tasks and feedback loop — bednet checks, RDTs, ORS dispatch, surveillance escalation.",       photo: photos.school }
+    { Icon: GraduationCap, color: "bg-heat", tag: "For schools",   title: "Head teachers & nurses",   desc: "Operational checklists for heat, dust, flood, malaria. Schedule changes triggered automatically.", photo: photos.classroom, alt: "Pupils in a Ghanaian classroom" },
+    { Icon: Users,         color: "bg-sky",  tag: "For families",  title: "Parents & guardians",       desc: "Action-led SMS in English, Twi, Hausa, Ga — what to feed, what to watch for, when to seek care.",   photo: photos.community, alt: "Parents and guardians in a community gathering" },
+    { Icon: Stethoscope,   color: "bg-leaf", tag: "For community", title: "CHWs & district health",    desc: "Field tasks and feedback loop — bednet checks, RDTs, ORS dispatch, surveillance escalation.",       photo: photos.school, alt: "A school building in Ghana" }
   ];
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
@@ -149,7 +153,7 @@ function Audiences() {
             className="group overflow-hidden rounded-xl4 border-2 border-line bg-paper shadow-soft transition hover:border-heat hover:shadow-big"
           >
             <div className="relative aspect-[4/3] overflow-hidden">
-              <img src={it.photo} alt="" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <img src={it.photo} alt={it.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
               <span className={`absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full ${it.color} px-3 py-1.5 font-display text-[11px] font-semibold text-white shadow-soft`}>
                 <it.Icon className="h-3.5 w-3.5" />
                 {it.tag}
@@ -193,7 +197,7 @@ function MidCTA() {
         <div className="relative aspect-square">
           <span className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-heat" />
           <span className="absolute -left-4 -bottom-4 h-16 w-16 rounded-full bg-sun" />
-          <img src={photos.child} alt="" className="relative z-10 h-full w-full rounded-xl4 object-cover shadow-big" />
+          <img src={photos.child} alt="A child in Ghana" loading="lazy" decoding="async" className="relative z-10 h-full w-full rounded-xl4 object-cover shadow-big" />
         </div>
       </div>
     </section>

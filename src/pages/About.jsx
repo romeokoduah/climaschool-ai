@@ -44,6 +44,7 @@ export default function About() {
         em="in under 60 seconds."
         sub="Five live feeds in. One AI engine. Three audiences out — each receiving the action they can take, in the language they speak, before risk becomes incidence."
         photo={photos.school}
+        alt="A school building in Ghana"
       />
 
       <section className="mx-auto max-w-7xl px-6 py-12">
