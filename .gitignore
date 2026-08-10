@@ -23,3 +23,6 @@ __pycache__/
 # Video project — heavy deps and rendered output stay out of git
 video/node_modules/
 video/out/
+
+# stray render-check scratch files
+video/*.tmp.mjs
