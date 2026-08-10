@@ -92,18 +92,14 @@ console.log(
 );
 
 if (buckets.size > 0) {
-  console.log("\naudio level profile (mean AAC bytes per packet, per 5 s)");
-  const keys = [...buckets.keys()].sort((a, b) => a - b);
-  const means = keys.map((k) => {
-    const b = buckets.get(k);
-    return b.bytes / b.count;
-  });
-  const peak = Math.max.apply(null, means);
-  keys.forEach((k, i) => {
-    const bars = Math.round((means[i] / peak) * 46);
-    const label = `${String(k)}s`;
+  const means = [...buckets.values()].map((b) => b.bytes / b.count);
+  const spread = Math.max.apply(null, means) - Math.min.apply(null, means);
+  if (spread < 1) {
     console.log(
-      `  ${label}${" ".repeat(Math.max(0, 6 - label.length))}${"█".repeat(bars)}${" ".repeat(Math.max(0, 46 - bars))} ${means[i].toFixed(0)}`,
+      "\nnote          the AAC stream is constant bitrate, so packet size is not a\n" +
+        "              level meter. To measure the actual music envelope, render the\n" +
+        "              composition to WAV with the Node API (remotion.config.ts sets a\n" +
+        "              CRF, which the wav codec rejects) and analyse the samples.",
     );
-  });
+  }
 }

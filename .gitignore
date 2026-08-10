@@ -26,3 +26,6 @@ video/out/
 
 # stray render-check scratch files
 video/*.tmp.mjs
+
+# Generated audio bed — reproduce with: cd video && npm run audio
+video/public/ambient.wav
