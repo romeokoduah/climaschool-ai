@@ -73,14 +73,53 @@ export const api = {
   getSchool: (id) => request(`/schools/${id}`),
   listFacilities: (params = {}) => request(`/facilities${qs(params)}`),
 
-  // Authenticated
+  // ── authenticated ──────────────────────────────────────────────────────────
   me: (token) => request("/auth/me", { token }),
+
+  // alerts + the safety gate
   listAlerts: (params, token) => request(`/alerts${qs(params)}`, { token }),
   getAlert: (id, token) => request(`/alerts/${id}`, { token }),
+  createAlert: (body, token) => request("/alerts", { method: "POST", body, token }),
   reviewAlert: (id, body, token) => request(`/alerts/${id}/review`, { method: "POST", body, token }),
   issueAlert: (id, token) => request(`/alerts/${id}/issue`, { method: "POST", body: {}, token }),
+  advanceAlert: (id, stage, body, token) =>
+    request(`/alerts/${id}/${stage}`, { method: "POST", body: body ?? {}, token }),
+  minutesOfProtection: (token) => request("/alerts/stats/minutes-of-protection", { token }),
+
+  // field intelligence
+  listReports: (params, token) => request(`/reports${qs(params)}`, { token }),
   signals: (token) => request("/reports/signals", { token }),
+  triageReport: (id, token) => request(`/reports/${id}/triage`, { method: "POST", body: {}, token }),
+
+  // observatory
   observatory: (token) => request("/observatory/overview", { token }),
+  observatorySchools: (token) => request("/observatory/schools", { token }),
+  observatoryFacilities: (token) => request("/observatory/facilities", { token }),
+  observatoryMap: (token) => request("/observatory/map", { token }),
+
+  // registry writes
+  createSchool: (body, token) => request("/schools", { method: "POST", body, token }),
+  updateSchool: (id, body, token) => request(`/schools/${id}`, { method: "PATCH", body, token }),
+  scoreSchool: (id, body, token) => request(`/schools/${id}/resilience`, { method: "POST", body, token }),
+  createFacility: (body, token) => request("/facilities", { method: "POST", body, token }),
+  updateFacility: (id, body, token) => request(`/facilities/${id}`, { method: "PATCH", body, token }),
+  scoreFacility: (id, body, token) => request(`/facilities/${id}/resilience`, { method: "POST", body, token }),
+
+  // readings
+  submitReading: (body, token) => request("/readings", { method: "POST", body, token }),
+  listReadings: (params, token) => request(`/readings${qs(params)}`, { token }),
+
+  // inbox + audience
+  listEnquiries: (params, token) => request(`/enquiries${qs(params)}`, { token }),
+  markEnquiryHandled: (id, token) => request(`/enquiries/${id}/handled`, { method: "POST", body: {}, token }),
+  listSubscribers: (params, token) => request(`/subscribers${qs(params)}`, { token }),
+  subscriberStats: (token) => request("/subscribers/stats", { token }),
+
+  // people
+  listUsers: (token) => request("/auth/users", { token }),
+  createUser: (body, token) => request("/auth/users", { method: "POST", body, token }),
+  updateUser: (id, body, token) => request(`/auth/users/${id}`, { method: "PATCH", body, token }),
+  changePassword: (body, token) => request("/auth/change-password", { method: "POST", body, token }),
 
   async login(email, password) {
     // The token endpoint is OAuth2 password flow, so it takes form encoding.

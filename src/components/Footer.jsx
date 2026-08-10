@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
+import { hasBackend } from "../lib/api";
 
 const nav = [
   {
@@ -126,6 +127,13 @@ export default function Footer() {
             >
               Source code
             </a>
+            {/* Only shown where a service is actually connected — on the static
+                deployments the console cannot sign anyone in. */}
+            {hasBackend && (
+              <Link to="/admin" className="font-display text-xs font-semibold text-ink-2 transition hover:text-heat">
+                Staff console
+              </Link>
+            )}
           </nav>
         </div>
 

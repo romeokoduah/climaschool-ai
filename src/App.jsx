@@ -3,6 +3,7 @@ import { Suspense, lazy, useEffect } from "react";
 import Nav from "./components/Nav.jsx";
 import Footer from "./components/Footer.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import { AuthProvider } from "./admin/AuthContext.jsx";
 import { pageview } from "./lib/analytics";
 
 // Code-split each route so the initial bundle only carries the shell + home.
@@ -17,6 +18,19 @@ const About = lazy(() => import("./pages/About.jsx"));
 const Privacy = lazy(() => import("./pages/Privacy.jsx"));
 const Terms = lazy(() => import("./pages/Terms.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
+
+// The operations console is a separate application sharing this shell. It is
+// lazily loaded so a public visitor never downloads it.
+const AdminLayout = lazy(() => import("./admin/AdminLayout.jsx"));
+const AdminOverview = lazy(() => import("./admin/pages/Overview.jsx"));
+const AdminAlerts = lazy(() => import("./admin/pages/Alerts.jsx"));
+const AdminReports = lazy(() => import("./admin/pages/Reports.jsx"));
+const AdminRiskMap = lazy(() => import("./admin/pages/RiskMap.jsx"));
+const AdminSchools = lazy(() => import("./admin/pages/Schools.jsx"));
+const AdminFacilities = lazy(() => import("./admin/pages/Facilities.jsx"));
+const AdminEnquiries = lazy(() => import("./admin/pages/Enquiries.jsx"));
+const AdminSubscribers = lazy(() => import("./admin/pages/Subscribers.jsx"));
+const AdminTeam = lazy(() => import("./admin/pages/Team.jsx"));
 
 const BASE_TITLE = "ClimaSchool AI";
 const TITLES = {
@@ -46,9 +60,35 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-    document.title = TITLES[pathname] || BASE_TITLE;
+    document.title = TITLES[pathname] || (pathname.startsWith("/admin") ? "Console — ClimaSchool AI" : BASE_TITLE);
     pageview(pathname);
   }, [pathname]);
+
+  // The console is a full-screen working tool with its own chrome: the marketing
+  // nav and footer would only get in an operator's way.
+  if (pathname.startsWith("/admin")) {
+    return (
+      <ErrorBoundary>
+        <Suspense fallback={<RouteFallback />}>
+          <AuthProvider>
+            <Routes>
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminOverview />} />
+                <Route path="alerts" element={<AdminAlerts />} />
+                <Route path="reports" element={<AdminReports />} />
+                <Route path="map" element={<AdminRiskMap />} />
+                <Route path="schools" element={<AdminSchools />} />
+                <Route path="facilities" element={<AdminFacilities />} />
+                <Route path="enquiries" element={<AdminEnquiries />} />
+                <Route path="subscribers" element={<AdminSubscribers />} />
+                <Route path="users" element={<AdminTeam />} />
+              </Route>
+            </Routes>
+          </AuthProvider>
+        </Suspense>
+      </ErrorBoundary>
+    );
+  }
 
   return (
     <div className="flex min-h-screen flex-col">

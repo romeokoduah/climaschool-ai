@@ -19,3 +19,7 @@ backend/.env
 __pycache__/
 *.pyc
 .venv/
+
+# Video project — heavy deps and rendered output stay out of git
+video/node_modules/
+video/out/
