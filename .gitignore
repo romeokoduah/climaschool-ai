@@ -10,3 +10,12 @@ dist
 
 # Internal source documents — not for the public repo
 *.docx
+
+# Backend secrets — never commit
+backend/.env
+.env.production.local
+
+# Python
+__pycache__/
+*.pyc
+.venv/

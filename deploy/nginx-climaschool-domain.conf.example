@@ -1,0 +1,131 @@
+# ClimaSchool AI — domain vhost (climaschoolai.com), port 80.
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# HOW TO ENABLE
+#
+#  1. DNS — at the registrar for climaschoolai.com, create:
+#         A     @      169.58.42.182
+#         A     www    169.58.42.182
+#     Wait for propagation, then confirm from the server:
+#         dig +short climaschoolai.com     # must print 169.58.42.182
+#         dig +short www.climaschoolai.com # must print 169.58.42.182
+#     Do NOT continue until both resolve — certbot's HTTP-01 challenge will fail.
+#
+#  2. Install the vhost:
+#         sudo cp nginx-climaschool-domain.conf.example \
+#                 /etc/nginx/sites-available/climaschool-domain
+#         sudo ln -sfn /etc/nginx/sites-available/climaschool-domain \
+#                      /etc/nginx/sites-enabled/climaschool-domain
+#
+#  3. Check and reload (nginx -t first — this server hosts ~10 other live apps,
+#     and a reload with a bad config takes all of them down):
+#         sudo nginx -t
+#         sudo systemctl reload nginx
+#
+#  4. Certificate — certbot rewrites this file in place, adding the 443 block
+#     and the 80 -> 443 redirect:
+#         sudo certbot --nginx -d climaschoolai.com -d www.climaschoolai.com
+#         sudo systemctl reload nginx
+#     Renewal is handled by the certbot systemd timer; verify with:
+#         sudo certbot renew --dry-run
+#
+#  5. Once the domain serves correctly, the IP vhost on 8084 can be removed:
+#         sudo rm /etc/nginx/sites-enabled/climaschool
+#         sudo nginx -t && sudo systemctl reload nginx
+#     Also add the domain to CORS_ORIGINS in /var/www/climaschool/api/.env and
+#     restart climaschool-api.
+#
+# NOTE: this block shares port 80 with the existing sites. It matches by
+# server_name only — no `default_server`, no catch-all `_` — so it cannot take
+# traffic belonging to alvatechlab.com or any other vhost on this host.
+# ─────────────────────────────────────────────────────────────────────────────
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name climaschoolai.com www.climaschoolai.com;
+
+    root /var/www/climaschool/web;
+    index index.html;
+
+    access_log /var/log/nginx/climaschool.access.log;
+    error_log  /var/log/nginx/climaschool.error.log;
+
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 5;
+    gzip_min_length 512;
+    gzip_types
+        text/plain
+        text/css
+        text/javascript
+        application/javascript
+        application/json
+        application/xml
+        image/svg+xml
+        font/woff2;
+
+    client_max_body_size 4m;
+
+    # ── API ──────────────────────────────────────────────────────────────────
+    location /api/ {
+        proxy_pass http://127.0.0.1:8100;
+        proxy_http_version 1.1;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade           $http_upgrade;
+        proxy_set_header Connection        "upgrade";
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 60s;
+    }
+
+    location = /openapi.json {
+        proxy_pass http://127.0.0.1:8100/openapi.json;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location = /health {
+        proxy_pass http://127.0.0.1:8100/health;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        access_log off;
+    }
+
+    location /docs {
+        proxy_pass http://127.0.0.1:8100/docs;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # ── SPA ──────────────────────────────────────────────────────────────────
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+        try_files $uri =404;
+    }
+
+    location = /index.html {
+        add_header Cache-Control "no-cache, must-revalidate";
+        expires -1;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+}

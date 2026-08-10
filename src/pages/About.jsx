@@ -1,4 +1,5 @@
 import PageHero from "../components/PageHero.jsx";
+import EnquiryForm from "../components/EnquiryForm.jsx";
 import { photos } from "../lib/photos";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -345,9 +346,13 @@ export default function About() {
             integrate a data feed, or contribute to the open advisory content —
             get in touch.
           </p>
+          <div className="mx-auto mt-8 max-w-2xl">
+            <EnquiryForm />
+          </div>
+
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a className="btn-primary" href="mailto:ecolutionghana@gmail.com?subject=ClimaSchool%20AI%20·%20partnership">
-              Get in touch <ArrowUpRight className="h-4 w-4" />
+            <a className="btn-ghost" href="mailto:ecolutionghana@gmail.com?subject=ClimaSchool%20AI%20·%20partnership">
+              Email us directly <ArrowUpRight className="h-4 w-4" />
             </a>
             <Link to="/advisory" className="btn-ghost">Browse the advisory</Link>
           </div>
