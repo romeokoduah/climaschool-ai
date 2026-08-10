@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRight, GraduationCap, Stethoscope, Users, MapPin } from "lucide-react";
+import { ArrowUpRight, GraduationCap, Stethoscope, Users, MapPin, Building2, Landmark } from "lucide-react";
 import { useEffect, useState } from "react";
 import { photos } from "../lib/photos";
 
@@ -20,7 +20,7 @@ function Hero() {
   const [temp]   = useCount(39);
   const [alerts] = useCount(147);
   const [sms]    = useCount(14902, 1800);
-  const [pupils] = useCount(4920, 1800);
+  const [parents] = useCount(400, 1800);
 
   return (
     <section className="relative isolate overflow-hidden text-white">
@@ -36,7 +36,7 @@ function Hero() {
           className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/10 px-4 py-1.5 font-display text-xs font-medium backdrop-blur"
         >
           <span className="h-2 w-2 animate-pulse rounded-full bg-sun shadow-[0_0_10px_#ffc94d]" />
-          Pilot deployment · 12 schools across Ghana
+          Pilot · Agbogbloshie–Korle Gonno &amp; Tamale Metropolis
         </motion.span>
 
         <motion.h1
@@ -53,16 +53,26 @@ function Hero() {
         </motion.h1>
 
         <p className="mt-6 max-w-prose text-lg text-white/90">
-          ClimaSchool AI turns live climate, air-quality and disease-surveillance feeds
-          into hyperlocal action — for head teachers, parents and community health workers
-          across <b>12 pilot schools in Ghana</b>, in four languages.
+          ClimaSchool AI turns climate, environmental and health-surveillance data into
+          predictive risk insights, early warnings and role-specific actions — for head
+          teachers, parents, community health workers and health facilities across
+          <b> two pilot zones in Ghana</b>, in four languages.
+        </p>
+
+        <p className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 font-display text-sm font-semibold uppercase tracking-widest text-sun">
+          {["Predict", "Prepare", "Act", "Protect", "Learn"].map((w, i) => (
+            <span key={w} className="inline-flex items-center gap-2">
+              {i > 0 && <span aria-hidden="true" className="text-white/40">→</span>}
+              {w}
+            </span>
+          ))}
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Link to="/engine" className="btn-primary">
             Open the Engine Room <ArrowUpRight className="h-4 w-4" />
           </Link>
-          <Link to="/seasons" className="btn-ghost !text-ink">Explore the seasons</Link>
+          <Link to="/platform" className="btn-ghost !text-ink">See the platform</Link>
         </div>
 
         <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -87,10 +97,10 @@ function Hero() {
             </div>
             <p className="text-xs text-ink-2">English · Twi · Hausa · Ga</p>
           </Tile>
-          <Tile colorClass="from-leaf/30 to-paper border-leaf" labelColor="text-ink-2" label="Pupils on the loop" big={pupils.toLocaleString()}>
-            <p className="text-xs text-ink-2">Greater Accra · Ashanti · Northern Region</p>
+          <Tile colorClass="from-leaf/30 to-paper border-leaf" labelColor="text-ink-2" label="Parents on the loop" big={parents.toLocaleString()}>
+            <p className="text-xs text-ink-2">Greater Accra · Northern Region</p>
             <span className="inline-flex items-center gap-1 font-display text-[11px] font-semibold text-ink-2">
-              <MapPin className="h-3 w-3" /> 12 schools · 3 regions
+              <MapPin className="h-3 w-3" /> 2 pilot schools · 2 zones
             </span>
           </Tile>
         </div>
@@ -136,11 +146,12 @@ function Audiences() {
       <div className="mx-auto max-w-prose text-center">
         <span className="eyebrow">what we do</span>
         <h2 className="mt-2 font-display text-4xl font-semibold leading-tight md:text-5xl">
-          Three audiences. <em className="font-hand text-[1.2em] font-bold not-italic text-heat">One trusted advisory.</em>
+          One alert. <em className="font-hand text-[1.2em] font-bold not-italic text-heat">Every actor around the child.</em>
         </h2>
         <p className="mt-3 text-ink-2">
-          Five live data feeds in. One AI engine. Three communities receiving the
-          action they can take, in the language they speak — before risk becomes incidence.
+          Five categories of data in. One risk engine. Every actor in the child&apos;s
+          protective ecosystem receives the action they can take, in the language they
+          speak — before a climate hazard becomes avoidable harm.
         </p>
       </div>
 
@@ -166,6 +177,30 @@ function Audiences() {
                 Open advisory <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="mt-5 grid gap-5 md:grid-cols-2">
+        {[
+          { Icon: Building2, color: "bg-heat", tag: "For health facilities", title: "Health posts & clinics", desc: "Facility Climate Resilience Score, supply readiness, demand forecasting, surge mode and referral coordination — grounded in WHO's climate-resilient health systems framework." },
+          { Icon: Landmark,  color: "bg-ink-2", tag: "For institutions",    title: "Districts & partners",   desc: "A read-only observatory for district health and education directorates, EPA, NADMO and researchers. No integration into government systems required." }
+        ].map((it) => (
+          <motion.div
+            key={it.title}
+            whileHover={{ y: -4 }}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
+            className="rounded-xl4 border-2 border-line bg-paper p-6 shadow-soft transition hover:border-heat"
+          >
+            <span className={`inline-flex items-center gap-1.5 rounded-full ${it.color} px-3 py-1.5 font-display text-[11px] font-semibold text-white shadow-soft`}>
+              <it.Icon className="h-3.5 w-3.5" />
+              {it.tag}
+            </span>
+            <h3 className="mt-3 font-display text-xl font-semibold">{it.title}</h3>
+            <p className="mt-2 text-sm text-ink-2">{it.desc}</p>
+            <Link to="/early-action" className="mt-3 inline-flex items-center gap-1 font-display text-sm font-semibold text-heat">
+              See the early action chain <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </motion.div>
         ))}
       </div>

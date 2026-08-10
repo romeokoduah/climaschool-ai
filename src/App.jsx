@@ -7,9 +7,12 @@ import { pageview } from "./lib/analytics";
 
 // Code-split each route so the initial bundle only carries the shell + home.
 const Home = lazy(() => import("./pages/Home.jsx"));
+const Platform = lazy(() => import("./pages/Platform.jsx"));
+const EarlyAction = lazy(() => import("./pages/EarlyAction.jsx"));
 const Seasons = lazy(() => import("./pages/Seasons.jsx"));
 const Advisory = lazy(() => import("./pages/Advisory.jsx"));
 const Engine = lazy(() => import("./pages/Engine.jsx"));
+const Trust = lazy(() => import("./pages/Trust.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const Privacy = lazy(() => import("./pages/Privacy.jsx"));
 const Terms = lazy(() => import("./pages/Terms.jsx"));
@@ -18,9 +21,12 @@ const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 const BASE_TITLE = "ClimaSchool AI";
 const TITLES = {
   "/": "ClimaSchool AI — Climate-health early warning for Ghana's schools",
+  "/platform": "The platform — ClimaSchool AI",
+  "/early-action": "Early action — ClimaSchool AI",
   "/seasons": "Seasons — ClimaSchool AI",
   "/advisory": "Live advisory — ClimaSchool AI",
   "/engine": "Engine Room — ClimaSchool AI",
+  "/trust": "Responsible AI — ClimaSchool AI",
   "/about": "About — ClimaSchool AI",
   "/privacy": "Privacy — ClimaSchool AI",
   "/terms": "Terms — ClimaSchool AI"
@@ -58,9 +64,12 @@ export default function App() {
           <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/platform" element={<Platform />} />
+              <Route path="/early-action" element={<EarlyAction />} />
               <Route path="/seasons" element={<Seasons />} />
               <Route path="/advisory" element={<Advisory />} />
               <Route path="/engine" element={<Engine />} />
+              <Route path="/trust" element={<Trust />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />

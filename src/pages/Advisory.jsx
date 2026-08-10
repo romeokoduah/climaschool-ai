@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { UtensilsCrossed } from "lucide-react";
 import { seasons, seasonOrder } from "../data/seasons";
 
 export default function Advisory() {
@@ -24,7 +25,7 @@ export default function Advisory() {
           Today's <em className="font-hand text-[1.2em] font-bold not-italic seasoned">climate-health playbook.</em>
         </h1>
         <p className="mx-auto mt-3 max-w-prose text-ink-2">
-          Switch seasons to load each playbook. Risks, foods, hydration, school + CHW actions, parent SMS, and the AI triggers behind every dispatch.
+          Switch seasons to load each playbook. Risks, foods, hydration, school + CHW actions, feeding menus, parent SMS, and the AI triggers behind every dispatch.
         </p>
         <div className="mt-6 inline-flex flex-wrap justify-center gap-2">
           {seasonOrder.map((k) => (
@@ -110,7 +111,22 @@ export default function Advisory() {
             <Inner letter="E" title="CHW & health-post actions" items={s.chw} />
           </Block>
 
-          <Block letter="F" title="Parent SMS — what we're sending today">
+          <Block letter="F" title="School feeding programme" Icon={UtensilsCrossed}>
+            <p className="-mt-2 mb-5 text-ink-2">Menu recommendations for school caterers and feeding coordinators this season.</p>
+            <ol className="grid gap-3 md:grid-cols-2">
+              {s.feeding.map(([t, b]) => (
+                <li key={t} className="grid grid-cols-[28px_1fr] gap-3 rounded-xl3 border-2 border-line bg-paper p-4 shadow-soft">
+                  <span className="mt-0.5 grid h-6 w-6 place-items-center rounded-full seasoned-bg font-display text-xs font-bold text-white">✓</span>
+                  <div>
+                    <b className="font-bold">{t}</b>
+                    <p className="text-sm text-ink-2">{b}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </Block>
+
+          <Block letter="G" title="Parent SMS — what we're sending today">
             <div className="grid items-start gap-8 md:grid-cols-[290px_1fr]">
               <Phone msgs={s.sms} />
               <ol className="flex flex-col gap-2">
@@ -127,7 +143,7 @@ export default function Advisory() {
             </div>
           </Block>
 
-          <Block letter="G" title="AI triggers & automated dispatch">
+          <Block letter="H" title="AI triggers & automated dispatch">
             <div className="overflow-hidden rounded-xl3 border-2 border-line">
               <table className="w-full text-sm">
                 <thead className="bg-cream-2">
@@ -205,7 +221,7 @@ function KPIs({ season }) {
   );
 }
 
-function Block({ letter, title, twoCol, children }) {
+function Block({ letter, title, twoCol, Icon, children }) {
   if (twoCol) {
     return <article className="grid gap-10 border-b-2 border-dashed border-line p-8 md:grid-cols-2 last:border-0">{children}</article>;
   }
@@ -213,6 +229,7 @@ function Block({ letter, title, twoCol, children }) {
     <article className="border-b-2 border-dashed border-line p-8 last:border-0">
       <header className="mb-6 flex items-center gap-3">
         <span className="grid h-11 w-11 place-items-center rounded-full seasoned-bg font-display text-lg font-bold text-white shadow-soft">{letter}</span>
+        {Icon && <Icon className="h-5 w-5 shrink-0 text-leaf" strokeWidth={2.2} aria-hidden="true" />}
         <h3 className="font-display text-2xl font-semibold">{title}</h3>
       </header>
       {children}

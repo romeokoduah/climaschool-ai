@@ -5,3 +5,8 @@ dist
 *.log
 .env
 .env.local
+
+.vercel
+
+# Internal source documents — not for the public repo
+*.docx

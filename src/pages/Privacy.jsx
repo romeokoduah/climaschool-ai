@@ -4,10 +4,11 @@ export default function Privacy() {
   return (
     <LegalPage eyebrow="privacy" title="Privacy Policy" updated="31 May 2026">
       <p>
-        ClimaSchool AI is operated by the United Youth Initiative for Africa (UNIYIA).
-        This policy explains what information we handle and why. We are committed to
-        collecting the minimum data needed to deliver life-relevant health advisories,
-        and to handling it responsibly.
+        ClimaSchool AI is operated by Eco-lution Consults, Ghana. This policy explains what
+        information we handle and why. Data minimisation is a core commitment: we collect
+        only the data essential for risk assessment, we hold no biometric or personally
+        identifiable child data, and risk assessments are made at school and community
+        level — never by profiling an individual child.
       </p>
 
       <Section heading="Information we handle">

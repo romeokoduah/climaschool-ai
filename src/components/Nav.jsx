@@ -2,11 +2,12 @@ import { NavLink, Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 
 const links = [
-  { to: "/",         label: "Home" },
-  { to: "/seasons",  label: "Seasons" },
-  { to: "/advisory", label: "Advisory" },
-  { to: "/engine",   label: "Engine Room" },
-  { to: "/about",    label: "About" }
+  { to: "/platform",     label: "Platform" },
+  { to: "/early-action", label: "Early action" },
+  { to: "/seasons",      label: "Seasons" },
+  { to: "/advisory",     label: "Advisory" },
+  { to: "/trust",        label: "Responsible AI" },
+  { to: "/about",        label: "About" }
 ];
 
 export default function Nav() {
@@ -23,14 +24,13 @@ export default function Nav() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-4 md:flex lg:gap-6">
           {links.map(l => (
             <NavLink
               key={l.to}
               to={l.to}
-              end={l.to === "/"}
               className={({ isActive }) =>
-                `font-display text-[15px] font-medium transition border-b-2 ${
+                `whitespace-nowrap font-display text-[14px] font-medium transition border-b-2 lg:text-[15px] ${
                   isActive ? "text-heat border-heat" : "text-ink-2 border-transparent hover:text-heat"
                 }`
               }

@@ -5,7 +5,7 @@ export default function Terms() {
     <LegalPage eyebrow="terms" title="Terms of Use" updated="31 May 2026">
       <p>
         By using the ClimaSchool AI website and services you agree to these terms. ClimaSchool AI
-        is operated by the United Youth Initiative for Africa (UNIYIA).
+        is operated by Eco-lution Consults, Ghana.
       </p>
 
       <Section heading="Health information — not a substitute for care">
@@ -44,7 +44,10 @@ export default function Terms() {
       <Section heading="Limitation of liability">
         <p>
           The service is provided "as is", without warranties of any kind. To the fullest extent
-          permitted by law, UNIYIA is not liable for any loss arising from reliance on the service.
+          permitted by law, Eco-lution Consults is not liable for any loss arising from reliance
+          on the service. Risk scores, demand forecasts and advisories are decision-support
+          estimates, not clinical guarantees — human professional judgement governs all
+          clinical and safeguarding decisions.
         </p>
       </Section>
 

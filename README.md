@@ -75,4 +75,7 @@ See [`PRODUCTION_CHECKLIST.md`](./PRODUCTION_CHECKLIST.md) before a commercial l
 - Software: **MIT** — see [`LICENSE`](./LICENSE).
 - Advisory content: **CC-BY 4.0**.
 
-Built by the **United Youth Initiative for Africa (UNIYIA)** · info@uniyia.org
+Built by **Eco-lution Consults**, Ghana · info@uniyia.org
+
+Partners: RCEES-UENR · Centre for Climate Change and Sustainability, University of Ghana ·
+UNIYIA (United Youth Initiative for Africa) · Medical Advisory Group · Ghana Health Service (district level).

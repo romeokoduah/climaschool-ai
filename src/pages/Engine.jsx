@@ -170,6 +170,8 @@ export default function Engine() {
             </div>
           </div>
 
+          <Classification out={out} district={input.district} />
+
           <div className="card p-5">
             <h4 className="mb-3 flex items-center gap-2 font-display text-base font-semibold">
               <span className="h-2.5 w-2.5 animate-pulse rounded-full seasoned-bg shadow-[0_0_10px_currentColor] seasoned" /> Triggers fired
@@ -268,10 +270,72 @@ function Slider({ Icon, label, unit, value, onChange, min, max, step, scale }) {
   );
 }
 
+// Every alert carries its band, its confidence and the evidence that produced it —
+// ClimaSchool never asserts an outbreak, only that indicators suggest elevated risk.
+const BAND_STYLE = {
+  GREEN:  { dot: "bg-leaf",           text: "text-leaf",      ring: "border-leaf" },
+  YELLOW: { dot: "bg-sun",            text: "text-[#b58400]", ring: "border-sun" },
+  ORANGE: { dot: "bg-heat",           text: "text-heat",      ring: "border-heat" },
+  RED:    { dot: "bg-[#c62828]",      text: "text-[#c62828]", ring: "border-[#c62828]" }
+};
+
+function Classification({ out, district }) {
+  const s = BAND_STYLE[out.band.code];
+  return (
+    <div className={`card border-2 p-5 ${s.ring}`}>
+      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <span className="inline-flex items-center gap-2">
+          <span aria-hidden="true" className={`h-3 w-3 rounded-full ${s.dot}`} />
+          <strong className={`font-display text-xl font-bold uppercase tracking-wide ${s.text}`}>
+            {out.band.code} — {out.band.label}
+          </strong>
+        </span>
+        <span className="font-display text-sm font-semibold text-ink-2">
+          Confidence: {out.confidence}%
+        </span>
+        <span className="ml-auto font-display text-xs font-semibold uppercase tracking-widest text-ink-3">
+          {district}
+        </span>
+      </div>
+
+      <p className="mt-2 text-sm text-ink-2">{out.band.meaning}</p>
+
+      <dl className="mt-4 grid gap-3 border-t-2 border-dashed border-line pt-4 sm:grid-cols-2">
+        <div>
+          <dt className="font-display text-[11px] font-semibold uppercase tracking-widest text-ink-3">Evidence</dt>
+          <dd className="mt-1 text-sm text-ink-2">{out.evidence.join(" | ")}</dd>
+        </div>
+        <div>
+          <dt className="font-display text-[11px] font-semibold uppercase tracking-widest text-ink-3">Platform action</dt>
+          <dd className="mt-1 text-sm text-ink-2">{out.band.platform}</dd>
+        </div>
+        <div>
+          <dt className="font-display text-[11px] font-semibold uppercase tracking-widest text-ink-3">Verification status</dt>
+          <dd className="mt-1 text-sm text-ink-2">
+            {out.band.review ? "Pending human review — not yet distributed" : "Automated distribution"}
+          </dd>
+        </div>
+        <div>
+          <dt className="font-display text-[11px] font-semibold uppercase tracking-widest text-ink-3">Source</dt>
+          <dd className="mt-1 text-sm text-ink-2">Climate model · school infrastructure data · CHW report</dd>
+        </div>
+      </dl>
+
+      <p className="mt-4 rounded-xl2 border-2 border-dashed border-line-2 bg-cream-2 px-4 py-3 text-sm text-ink-2">
+        ClimaSchool AI does not say <b>&ldquo;there is an outbreak&rdquo;</b>. It says: climate and
+        available indicators suggest elevated risk — public-health verification recommended.
+        {" "}<Link to="/trust" className="border-b-2 border-dashed border-heat font-semibold text-heat">
+          How the safety gate works
+        </Link>
+      </p>
+    </div>
+  );
+}
+
 function Reach({ overall }) {
-  const schools = Math.min(12, Math.max(1, Math.round(overall / 8)));
-  const parents = (schools * 410 + Math.round(overall * 7)).toLocaleString();
-  const chws    = Math.max(1, Math.round(schools * 1.4));
+  const schools = Math.min(2, Math.max(1, Math.round(overall / 45)));
+  const parents = (schools * 200 + Math.round(overall * 2)).toLocaleString();
+  const chws    = schools * 2;
 
   const cell = (Icon, cap, big, sub) => (
     <div className="flex flex-col gap-1 p-5 [&:not(:last-child)]:md:border-r-2 [&:not(:last-child)]:md:border-dashed [&:not(:last-child)]:md:border-line">
@@ -285,9 +349,9 @@ function Reach({ overall }) {
 
   return (
     <div className="grid grid-cols-1 overflow-hidden rounded-xl3 border-2 border-line bg-paper md:grid-cols-3">
-      {cell(GraduationCap, "Schools", schools, "alerted in district")}
-      {cell(Users,         "Parents", parents, "SMS dispatched")}
-      {cell(Stethoscope,   "CHWs",    chws,    "field tasks queued")}
+      {cell(GraduationCap, "Pilot schools", schools, "alerted in zone")}
+      {cell(Users,         "Parents",       parents, "SMS dispatched")}
+      {cell(Stethoscope,   "CHWs",          chws,    "field tasks queued")}
     </div>
   );
 }
