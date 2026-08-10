@@ -5,3 +5,27 @@ dist
 *.log
 .env
 .env.local
+
+.vercel
+
+# Internal source documents — not for the public repo
+*.docx
+
+# Backend secrets — never commit
+backend/.env
+.env.production.local
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Video project — heavy deps and rendered output stay out of git
+video/node_modules/
+video/out/
+
+# stray render-check scratch files
+video/*.tmp.mjs
+
+# Generated audio bed — reproduce with: cd video && npm run audio
+video/public/ambient.wav

@@ -1,0 +1,47 @@
+[Unit]
+Description=ClimaSchool AI API (FastAPI/uvicorn)
+Documentation=https://climaschoolai.com
+# The API opens a connection pool at import time, so it should not race the database.
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/climaschool/api
+
+# Secrets live in the .env file, not in this unit — keep it chmod 600, owned by www-data.
+EnvironmentFile=/var/www/climaschool/api/.env
+
+# Bound to loopback on purpose: nginx terminates TLS and fronts the app. Binding
+# 0.0.0.0 would publish the API on 8100 alongside the other apps on this server.
+ExecStart=/var/www/climaschool/api/.venv/bin/uvicorn app.main:app \
+    --host 127.0.0.1 \
+    --port 8100 \
+    --workers 2 \
+    --proxy-headers \
+    --forwarded-allow-ips=127.0.0.1
+
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGINT
+
+# ── hardening ────────────────────────────────────────────────────────────────
+# This host runs ~10 other production apps; the blast radius of this one is capped.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=climaschool-api
+
+[Install]
+WantedBy=multi-user.target

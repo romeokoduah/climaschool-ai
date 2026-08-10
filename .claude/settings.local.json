@@ -24,7 +24,12 @@
       "Bash(gh repo *)",
       "Bash(git push *)",
       "Bash(git reset *)",
-      "Bash(git restore *)"
+      "Bash(git restore *)",
+      "Bash(gh pr create --base main --head production-hardening --title 'Production hardening: a11y, SEO/PWA, performance, error handling & commercialization' --body ' *)",
+      "Bash(npx vercel *)",
+      "Bash(VERCEL=1 npm run build)",
+      "Bash('/c/Program Files \\(x86\\)/Microsoft/Edge/Application/msedge.exe' --headless=new --disable-gpu --no-sandbox --virtual-time-budget=7000 --dump-dom https://climaschool-ai.vercel.app/)",
+      "Bash(cmd.exe /c start \"\" \"https://climaschool-ai.vercel.app/\")"
     ]
   }
 }

@@ -28,6 +28,22 @@ export function classify(input) {
   else if (overall >= 45) { action = "ELEVATED · advisory dispatched"; level = "warn"; }
   else if (overall >= 25) { action = "WATCH · pre-position";          level = "info"; }
 
+  const band = classifyBand(overall);
+
+  // Agreement between the hazard signals stands in for model confidence: when several
+  // engines point the same way the classification is better supported than when one
+  // outlier drives the score on its own.
+  const signals = [heatScore, dustScore, floodScore, malariaScore];
+  const spread  = Math.max(...signals) - median(signals);
+  const confidence = Math.round(clamp(96 - spread * 0.45));
+
+  const evidence = [
+    `forecast ${tempC}°C`,
+    `humidity ${humidity}%`,
+    `AQI ${aqi}`,
+    `rainfall ${rainfallMm} mm/24h`
+  ];
+
   const fires = [];
   if (tempC >= 40)     fires.push(["🔥 Extreme heat", "Forecast > 40°C — closure recommendation to district education."]);
   else if (tempC >= 38) fires.push(["🔥 Heat alert", "Forecast > 38°C — schedule modification + assembly cancelled."]);
@@ -38,7 +54,26 @@ export function classify(input) {
   if (humidity >= 80 && tempC >= 22 && tempC <= 32) fires.push(["🦟 Malaria conditions", "Bednet reminder dispatched · ITN distribution coordinated."]);
   if (fires.length === 0) fires.push(["✅ All clear", "Normal operations — routine monitoring continues."]);
 
-  return { season: top.key, overall, action, level, fires };
+  return { season: top.key, overall, action, level, fires, band, confidence, evidence };
+}
+
+// The four-level classification is standard across every hazard engine. ORANGE and RED
+// carry a mandatory human review gate before anything is distributed.
+export const bands = [
+  { code: "GREEN",  label: "Normal",  meaning: "Conditions are within expected range. Standard seasonal health guidance applies.", platform: "Seasonal advisory to schools and parents",       review: false, min: 0 },
+  { code: "YELLOW", label: "Watch",   meaning: "Conditions are approaching risk thresholds. Preparedness actions recommended.",   platform: "Preparedness checklist to school and CHW",        review: false, min: 25 },
+  { code: "ORANGE", label: "Prepare", meaning: "Risk threshold breached. Immediate preparedness actions required.",              platform: "Action alert to school, CHW and health facility", review: true,  min: 55 },
+  { code: "RED",    label: "Act",     meaning: "Critical risk. Immediate action required. Human review mandatory before distribution.", platform: "Critical alert with human review gate",     review: true,  min: 80 }
+];
+
+export function classifyBand(overall) {
+  return bands.reduce((acc, b) => (overall >= b.min ? b : acc), bands[0]);
+}
+
+function median(xs) {
+  const s = [...xs].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
 export const presets = {
@@ -52,7 +87,7 @@ export const presets = {
 function clamp(n) { return Math.max(0, Math.min(100, n)); }
 
 export function parseUpload(filename, text) {
-  const json = filename.toLowerCase().endsWith(".json") || /^[\[{]/.test(text.trim());
+  const json = filename.toLowerCase().endsWith(".json") || /^[[{]/.test(text.trim());
   let row;
   if (json) {
     const j = JSON.parse(text);

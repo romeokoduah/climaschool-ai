@@ -49,6 +49,12 @@ export const seasons = {
       ["ARI case tracking", "Weekly ARI tally. Alert district if > 10% of school children."],
       ["Skin treatment outreach", "Free impetigo treatment at school-linked posts. Antiseptic soap to nurses."]
     ],
+    feeding: [
+      ["Morning porridge (koko)", "Serve warm daily. Fortify with 2 tablespoons of groundnut paste per child portion for protein and healthy fat. Add ginger for anti-inflammatory benefit."],
+      ["Midday meal", "Groundnut soup with rice, yam or plantain. Green leafy side (kontomire or spinach) at least 3 days a week. Serve warm — promotes fluid intake."],
+      ["Citrus fruit provision", "One orange or tangerine per child at least 3 times a week. Request seasonal supply from the district agriculture office — citrus peaks December to February."],
+      ["Avoid all season", "Cold drinks, sugary beverages and deep-fried snacks throughout harmattan. Replace with warm water, sobolo or diluted fresh juice."]
+    ],
     parent: [
       ["Morning routine", "Warm breakfast and 2 cups of water. Petroleum jelly to lips and nostrils against dust."],
       ["School pack", "Personal water bottle (boiled or sachet). Individual face towel — no sharing."],
@@ -119,6 +125,12 @@ export const seasons = {
       ["Sleep & rest tracking", "Ask about sleep on home visits. Persistent night heat raises vulnerability."],
       ["Heat-suppressed appetite screening", "Weigh school-age children Mar–Apr. Weight loss → RUTF or feeding support."],
       ["Skin treatment outreach", "Free antifungal/antibacterial at school-linked posts. Antiseptic soap supplied."]
+    ],
+    feeding: [
+      ["Morning · before 9am", "Light, cooling food: akamu / corn porridge with milk, fresh banana or pawpaw, and a full cup of water or coconut water. Never skip breakfast."],
+      ["Mid-morning snack", "Sliced watermelon or cucumber. A pinch of salt on cucumber slices aids electrolyte replacement. Chilled if refrigeration exists, otherwise room temperature."],
+      ["Midday meal · if school runs to 12pm", "Light kenkey or boiled yam with grilled or steamed fish and pepper sauce. No fried or heavy stew options. Add sobolo or diluted fresh juice — never carbonated drinks."],
+      ["Avoid through Mar — Apr", "Deep-fried foods, heavy palm oil stews and sugary drinks. Replace all commercial beverages with sobolo, water or coconut water. Request seasonal fruit donation from district agriculture extension."]
     ],
     parent: [
       ["Before school", "Full cup of water or coconut water. Sunscreen or shea butter on exposed skin. Light loose cotton."],
@@ -192,6 +204,12 @@ export const seasons = {
       ["Bednet distribution coordination", "With NMCP — ITNs to school-age households before May. Schools as distribution points."],
       ["School malaria education", "30-min CHW or nurse session at each school in April: bednets, eliminate standing water, early symptoms."]
     ],
+    feeding: [
+      ["Morning meal", "Warm fermented porridge (koko) with groundnut paste — probiotics protect the gut when diarrhoeal risk is highest. Serve with one boiled egg for protein."],
+      ["Midday meal", "Beans and rice with kontomire stew or sweet potato. Iron-rich combination supports immunity against malaria. Citrus side squeezed over food. Everything cooked thoroughly — no raw vegetables."],
+      ["Water safety rule", "All water used in school food preparation must be boiled. Display water safety rules in the kitchen. Caterer washes hands before each session; serving utensils kept covered."],
+      ["Avoid entirely", "Raw salads, uncooked vegetables and any food from flood-affected market stalls. Source from verified, dry, covered markets only during May–July."]
+    ],
     parent: [
       ["Water at home", "Boil all drinking and cooking water May–Jul. Covered container. Purification tablets if no boil."],
       ["Malaria protection", "Insecticide-treated bednet every night from May. Remove standing water weekly."],
@@ -263,6 +281,12 @@ export const seasons = {
       ["Post-flood food security assessment", "Identify households that lost crops/stores. Coordinate emergency food. Severe malnutrition → therapeutic feeding."],
       ["Immunisation catch-up", "Identify children who missed immunisations due to flooding. Catch-up day at school in September."]
     ],
+    feeding: [
+      ["Harvest sourcing strategy", "The most affordable season for fresh, nutritious food. Feeding coordinators buy bulk groundnuts, maize, sweet potato, tomatoes and garden eggs direct from local farms."],
+      ["Morning meal", "Fresh maize porridge (tom brown) fortified with groundnut paste and a teaspoon of milk or soy if available. Protein and calorie density for children facing post-flood food insecurity at home."],
+      ["Midday meal rotation", "Groundnut soup with yam or rice (Mon/Thu); beans and smoked fish stew with plantain (Tue/Fri); sweet potato with kontomire stew and boiled egg (Wed). Iron-rich options prioritised across the week."],
+      ["Fruit provision", "Pawpaw and bananas are at peak harvest abundance August–October. One piece of fruit per child daily as an afternoon supplement. Request donation from the parent community."]
+    ],
     parent: [
       ["Water safety — through October", "Don't stop boiling in August. Contamination takes weeks to clear. Sachet or boiled until November."],
       ["Malaria — do not stop", "Bednets every night through October. Anaemia from previous malaria raises vulnerability."],
@@ -288,3 +312,29 @@ export const seasons = {
 };
 
 export const seasonOrder = ["harmattan", "dryheat", "firstrains", "secondrains"];
+
+export const crossSeason = {
+
+  wash: [
+    ["Handwashing stations", "Minimum 1 station per 30 pupils. Clean water and soap available at all times. Inspected and restocked daily."],
+    ["Safe water supply", "Verified boiled, sachet or treated water for all drinking and food preparation. No open wells or untreated sources."],
+    ["Latrine sanitation", "Separate facilities for boys, girls and teachers. Cleaned daily. Doors with privacy locks. Menstrual hygiene provision for girls aged 10+."],
+    ["Sick bay", "Minimum: ORS sachets, paracetamol syrup, antiseptic, bandages, thermometer — plus the seasonal additions set out in this framework."],
+    ["Food storage", "All food elevated off the ground. Covered containers. Monthly inspection for mould and pest damage. Compromised stock disposed of."]
+  ],
+
+  parentPrinciples: [
+    ["Plain language", "All SMS and WhatsApp messages written for parents with primary education. No medical jargon."],
+    ["Local language", "Messages sent in the language of the parent's district — Twi, Hausa, Ga or English. Preference set at school registration."],
+    ["Actionable", "Every message ends with a single clear action the parent can take today — not a general warning."],
+    ["Affordable", "Food recommendations reference locally available, affordable options. Never expensive imported supplements as a first-line intervention."],
+    ["Two-way", "Parents reply with a keyword — HELP, SICK, FLOOD — for targeted sub-guidance or to connect with a CHW."]
+  ],
+
+  chwIntegration: [
+    ["Structured visit checklists", "CHWs receive visit checklists via SMS, tailored to the current season and risk level."],
+    ["Absence-triggered home visits", "The platform flags children absent 2+ days with reported fever, prompting a CHW home visit within 24 hours."],
+    ["Keyword field reporting", "CHWs report back by SMS code — '1' malaria confirmed, '2' diarrhoea, '3' respiratory — feeding real-time community data into the district risk model."],
+    ["Continuous feedback loop", "School, home, community health post and district health office stay linked in one loop, mediated by ClimaSchool AI."]
+  ]
+};

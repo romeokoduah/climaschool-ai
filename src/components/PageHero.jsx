@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function PageHero({ eyebrow, title, em, sub, photo, kicker, children }) {
+export default function PageHero({ eyebrow, title, em, sub, photo, alt = "", kicker, children }) {
   return (
     <section className="mx-auto max-w-7xl px-6 pt-14 pb-8 md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 md:items-center">
       <motion.div
@@ -24,11 +24,12 @@ export default function PageHero({ eyebrow, title, em, sub, photo, kicker, child
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative mt-8 aspect-[4/3] md:mt-0"
         >
-          <span className="absolute -right-3 -top-3 z-0 h-24 w-24 rounded-full seasoned-bg" />
-          <span className="absolute -left-4 -bottom-4 z-0 h-16 w-16 rounded-full bg-sun" />
+          <span aria-hidden="true" className="absolute -right-3 -top-3 z-0 h-24 w-24 rounded-full seasoned-bg" />
+          <span aria-hidden="true" className="absolute -left-4 -bottom-4 z-0 h-16 w-16 rounded-full bg-sun" />
           <img
             src={photo}
-            alt=""
+            alt={alt}
+            decoding="async"
             className="relative z-10 h-full w-full rounded-xl4 object-cover shadow-big"
           />
           {children}
