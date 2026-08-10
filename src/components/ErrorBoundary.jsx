@@ -28,8 +28,8 @@ export default class ErrorBoundary extends Component {
           <p className="text-ink-2">
             An unexpected error stopped this view from loading. Reloading usually fixes it.
             If it keeps happening, please let us know at{" "}
-            <a className="border-b-2 border-dashed border-heat text-heat" href="mailto:info@uniyia.org">
-              info@uniyia.org
+            <a className="border-b-2 border-dashed border-heat text-heat" href="mailto:ecolutionghana@gmail.com">
+              ecolutionghana@gmail.com
             </a>.
           </p>
           <button className="btn-primary" onClick={() => window.location.reload()}>

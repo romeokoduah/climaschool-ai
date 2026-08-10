@@ -76,7 +76,7 @@ export default function Trust() {
         em="and who signed it off."
         sub="ClimaSchool AI is built to be checked. Colour-coded risk with written labels, confidence scores with the evidence behind them, a human review gate before any critical message leaves the building, and a lifecycle that makes early warning to early action measurable."
         photo={photos.health}
-        alt="A community health worker reviewing records at a health post in Ghana"
+        alt="Health workers attending to patients at a community health outreach in West Africa"
       />
 
       {/* ── 1 · RISK CLASSIFICATION ─────────────────────────────────── */}
@@ -595,7 +595,7 @@ export default function Trust() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a
               className="btn-primary"
-              href="mailto:info@uniyia.org?subject=ClimaSchool%20AI%20·%20responsible%20AI%20review"
+              href="mailto:ecolutionghana@gmail.com?subject=ClimaSchool%20AI%20·%20responsible%20AI%20review"
             >
               Request the documentation <ArrowUpRight className="h-4 w-4" />
             </a>

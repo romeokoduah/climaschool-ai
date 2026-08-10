@@ -73,7 +73,7 @@ export default function Platform() {
         em="One platform."
         sub="ClimaSchool AI turns climate, environmental, school, community and health information into predictive risk insight, early warning and role-specific action — for everyone standing around the child."
         photo={photos.classroom}
-        alt="Pupils in a Ghanaian classroom"
+        alt="Schoolchildren in uniform at their desks in a West African classroom"
       />
 
       {/* ───────── 1 · Core definition & positioning ───────── */}
@@ -440,7 +440,7 @@ export default function Platform() {
           </p>
 
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a className="btn-primary" href="mailto:info@uniyia.org?subject=ClimaSchool%20AI%20%C2%B7%20platform">
+            <a className="btn-primary" href="mailto:ecolutionghana@gmail.com?subject=ClimaSchool%20AI%20%C2%B7%20platform">
               Get in touch <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
             <Link to="/about" className="btn-ghost">How the engine works</Link>

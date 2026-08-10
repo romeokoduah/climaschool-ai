@@ -23,7 +23,7 @@ export default function SeasonsPage() {
         em="One engine."
         sub="Each season produces a sharply different child-health profile. Tap any season to load the live advisory the platform is dispatching."
         photo={photos.classroom}
-        alt="Pupils in a Ghanaian classroom"
+        alt="Schoolchildren in uniform at their desks in a West African classroom"
       />
 
       <section className="mx-auto max-w-7xl px-6 pb-12">
@@ -37,10 +37,10 @@ export default function SeasonsPage() {
       <section className="mx-auto max-w-7xl px-6 pb-16">
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           {[
-            [photos.community, "Community gathering in Ghana"],
-            [photos.child, "A child in Ghana"],
-            [photos.school, "A school building in Ghana"],
-            [photos.classroom, "Pupils in a Ghanaian classroom"]
+            [photos.community, "African women and children gathered together under a tree"],
+            [photos.child, "Portrait of a Ghanaian schoolgirl in her classroom"],
+            [photos.school, "Children gathered in the schoolyard of a rural African village school"],
+            [photos.market, "A bustling open-air market in Accra, Ghana"]
           ].map(([p, alt]) => (
             <figure key={p} className="aspect-square overflow-hidden rounded-xl3 shadow-soft">
               <img src={p} alt={alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-500 hover:scale-105" />

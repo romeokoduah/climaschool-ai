@@ -137,9 +137,9 @@ function Tile({ colorClass, labelColor, label, pulse, big, sup, children }) {
 
 function Audiences() {
   const items = [
-    { Icon: GraduationCap, color: "bg-heat", tag: "For schools",   title: "Head teachers & nurses",   desc: "Operational checklists for heat, dust, flood, malaria. Schedule changes triggered automatically.", photo: photos.classroom, alt: "Pupils in a Ghanaian classroom" },
-    { Icon: Users,         color: "bg-sky",  tag: "For families",  title: "Parents & guardians",       desc: "Action-led SMS in English, Twi, Hausa, Ga — what to feed, what to watch for, when to seek care.",   photo: photos.community, alt: "Parents and guardians in a community gathering" },
-    { Icon: Stethoscope,   color: "bg-leaf", tag: "For community", title: "CHWs & district health",    desc: "Field tasks and feedback loop — bednet checks, RDTs, ORS dispatch, surveillance escalation.",       photo: photos.school, alt: "A school building in Ghana" }
+    { Icon: GraduationCap, color: "bg-heat", tag: "For schools",   title: "Head teachers & nurses",   desc: "Operational checklists for heat, dust, flood, malaria. Schedule changes triggered automatically.", photo: photos.classroom, alt: "Schoolchildren in uniform at their desks in a West African classroom" },
+    { Icon: Users,         color: "bg-sky",  tag: "For families",  title: "Parents & guardians",       desc: "Action-led SMS in English, Twi, Hausa, Ga — what to feed, what to watch for, when to seek care.",   photo: photos.community, alt: "African women and children gathered together under a tree" },
+    { Icon: Stethoscope,   color: "bg-leaf", tag: "For community", title: "CHWs & district health",    desc: "Field tasks and feedback loop — bednet checks, RDTs, ORS dispatch, surveillance escalation.",       photo: photos.school, alt: "Children gathered in the schoolyard of a rural African village school" }
   ];
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
@@ -232,7 +232,7 @@ function MidCTA() {
         <div className="relative aspect-square">
           <span className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-heat" />
           <span className="absolute -left-4 -bottom-4 h-16 w-16 rounded-full bg-sun" />
-          <img src={photos.child} alt="A child in Ghana" loading="lazy" decoding="async" className="relative z-10 h-full w-full rounded-xl4 object-cover shadow-big" />
+          <img src={photos.child} alt="Portrait of a Ghanaian schoolgirl in her classroom" loading="lazy" decoding="async" className="relative z-10 h-full w-full rounded-xl4 object-cover shadow-big" />
         </div>
       </div>
     </section>

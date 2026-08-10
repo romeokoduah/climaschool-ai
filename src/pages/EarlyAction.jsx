@@ -107,7 +107,7 @@ export default function EarlyAction() {
         em="The action is."
         sub={chainIntro.claim}
         photo={photos.community}
-        alt="Community members walking together in a Ghanaian town"
+        alt="African women and children gathered together under a tree"
       />
 
       {/* ── 1 · The Early Action Chain ──────────────────────────────── */}

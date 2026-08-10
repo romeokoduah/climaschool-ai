@@ -13,7 +13,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-            <Col cap="By" body={<>Eco-lution Consults<br/>Ghana<br/><a className="border-b-2 border-dashed border-heat text-heat" href="mailto:info@uniyia.org">info@uniyia.org</a></>} />
+            <Col cap="By" body={<>Eco-lution Consults<br/>Ghana<br/><a className="border-b-2 border-dashed border-heat text-heat" href="mailto:ecolutionghana@gmail.com">ecolutionghana@gmail.com</a></>} />
             <Col cap="For" body={<>Schools, families, community health workers &amp; health facilities across Ghana</>} />
             <Col cap="Built on" body={<>WHO EWARS-csd · DHIS2<br/>WHO climate-resilient health systems · WMO EW4All</>} />
             <Col cap="Licence" body={<>MIT (software)<br/>CC-BY 4.0 (advisory)</>} />

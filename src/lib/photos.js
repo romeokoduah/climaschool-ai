@@ -1,14 +1,27 @@
-// Real-photo URLs from Unsplash. Swap any time with your own assets in /public.
-const u = (id, w = 1200) =>
-  `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`;
+// Photography for the platform: African / West African children, schools, families,
+// markets and community health. All Pexels — free for commercial use, hotlinkable,
+// no attribution required. Swap any time with your own assets in /public.
+//
+// slot        source photo                                                        location
+// hero        "Happy Children During School Brake Time" · Obibini Kobby           Accra, Ghana
+// classroom   "Children at School" · Armstrong Opulency                           Ishiagu, Nigeria
+// community   "African Women and Kids Sitting under a Tree" · Xavier Messina      Africa
+// school      "Children Gathering in Rural African Village Schoolyard"            Africa
+// child       "Portrait of Schoolgirl" · ZEL Photography                          Ghana
+// market      "Bustling Market Scene in Accra, Ghana" · Zeal Creative Studios     Accra, Ghana
+// health      "Healthcare Outreach in Kaduna, Nigeria" · mk_photoz                Kaduna, Nigeria
+// family      "African Family in Traditional Clothing Portrait" · Darkshade       Africa
+
+const p = (id, w = 1200) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 
 export const photos = {
-  hero:        u("1503676260728-1c00da094a0b", 1800),
-  classroom:   u("1497486751825-1233686d5d80"),
-  community:   u("1488521787991-ed7bbaae773c"),
-  school:      u("1542884748-2b87b36c6b90"),
-  child:       u("1571260899304-425eee4c7efc"),
-  market:      u("1535489040055-02ea71d6ea16"),
-  health:      u("1581952976147-5a2d15560349"),
-  family:      u("1560250097-0b93528c311a")
+  hero:        p(9424263, 1800),
+  classroom:   p(12448839),
+  community:   p(12429854),
+  school:      p(35250413),
+  child:       p(20191067),
+  market:      p(36392318),
+  health:      p(33132346),
+  family:      p(33693372)
 };

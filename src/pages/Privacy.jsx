@@ -54,8 +54,8 @@ export default function Privacy() {
       <Section heading="Contact">
         <p>
           Questions or requests:{" "}
-          <a className="border-b-2 border-dashed border-heat text-heat" href="mailto:info@uniyia.org">
-            info@uniyia.org
+          <a className="border-b-2 border-dashed border-heat text-heat" href="mailto:ecolutionghana@gmail.com">
+            ecolutionghana@gmail.com
           </a>.
         </p>
       </Section>

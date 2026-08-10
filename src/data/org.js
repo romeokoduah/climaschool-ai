@@ -135,12 +135,6 @@ export const partners = [
       "Scientific oversight of seasonal risk models, climate-health data integration and evidence generation during the pilot period."
   },
   {
-    name: "UNIYIA",
-    detail: "United Youth Initiative for Africa",
-    role:
-      "YOUNGO-accredited and UNFCCC observer organisation. Green Youth Club school network as pilot pipeline and youth health mobilisation capacity."
-  },
-  {
     name: "Medical Advisory Group",
     detail: "Practising Ghanaian doctors",
     role:

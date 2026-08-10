@@ -28,7 +28,7 @@ export default function About() {
         em="around the child."
         sub="An open-source, child-centred platform that turns climate, environmental, school, community and health information into predictive risk insights, early warnings and role-specific actions — protecting children from climate-sensitive health risks."
         photo={photos.school}
-        alt="A school building in Ghana"
+        alt="Children gathered in the schoolyard of a rural African village school"
       />
 
       {/* ── What it is ─────────────────────────────────────────────── */}
@@ -346,7 +346,7 @@ export default function About() {
             get in touch.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a className="btn-primary" href="mailto:info@uniyia.org?subject=ClimaSchool%20AI%20·%20partnership">
+            <a className="btn-primary" href="mailto:ecolutionghana@gmail.com?subject=ClimaSchool%20AI%20·%20partnership">
               Get in touch <ArrowUpRight className="h-4 w-4" />
             </a>
             <Link to="/advisory" className="btn-ghost">Browse the advisory</Link>
